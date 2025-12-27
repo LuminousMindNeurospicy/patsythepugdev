@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patsy The Pug.dev</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #0d1117;
+        color: #c9d1d9;
+        overflow-x: hidden;
+      }
+
+      .code-font {
+        font-family: "Fira Code", "Courier New", monospace;
+      }
+
+      .neon-shadow {
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+      }
+
+      .glow-border {
+        box-shadow: 0 0 15px currentColor,
+          inset 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+
+      .glitter {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glitter::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.3) 50%,
+          transparent 70%
+        );
+        animation: glitter 3s infinite;
+      }
+
+      @keyframes glitter {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      .stat-card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        border-color: currentColor;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        border: 2px solid currentColor;
+      }
+
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #fe1254, #ec15db, #3b57fd);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        border: 3px solid #30363d;
+        position: relative;
+      }
+
+      .nav-link {
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .nav-link:hover {
+        background: #161b22;
+        border-color: currentColor;
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full">
+    <div
+      id="app"
+      class="w-full h-full"
+      style="min-height: 100%; background: #0d1117"
+    >
+      <!-- Header Navigation -->
+      <header
+        style="
+          background: #161b22;
+          border-bottom: 1px solid #30363d;
+          padding: 12px 16px;
+        "
+      >
+        <style>
+          @media (min-width: 768px) {
+            header {
+              padding: 16px 24px !important;
+            }
+          }
+        </style>
+        <div
+          style="
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 16px">
+            <img
+              src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/patsy-logo-footer-CfE7TuHM.png"
+              alt="Patsy The Pug Logo"
+              style="height: 50px; width: auto"
+            />
+            <style>
+              @media (min-width: 768px) {
+                header img {
+                  height: 65px !important;
+                }
+              }
+            </style>
+          </div>
+          <nav
+            style="
+              display: flex;
+              gap: 6px;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+            "
+          >
+            <style>
+              @media (min-width: 768px) {
+                nav {
+                  width: auto !important;
+                  gap: 8px !important;
+                }
+              }
+              @media (max-width: 767px) {
+                .nav-link {
+                  font-size: 12px !important;
+                  padding: 6px 10px !important;
+                }
+              }</style
+            ><a
+              href="#packages"
+              class="nav-link code-font"
+              style="color: #3b57fd; text-decoration: none; font-size: 14px"
+              >Packages</a
+            >
+            <a
+              href="#overview"
+              class="nav-link code-font"
+              style="color: #00b3fe; text-decoration: none; font-size: 14px"
+              >Overview</a
+            >
+            <a
+              href="#repos"
+              class="nav-link code-font"
+              style="color: #a3fc06; text-decoration: none; font-size: 14px"
+              >Repositories</a
+            >
+            <a
+              href="#tiktok"
+              class="nav-link code-font"
+              style="color: #00f2ea; text-decoration: none; font-size: 14px"
+              >TikTok</a
+            >
+            <a
+              href="#instagram"
+              class="nav-link code-font"
+              style="color: #ec15db; text-decoration: none; font-size: 14px"
+              >Instagram</a
+            >
+          </nav>
+        </div>
+      </header>
+      <!-- Main Content -->
+      <main style="max-width: 1280px; margin: 0 auto; padding: 16px">
+        <style>
+          @media (min-width: 768px) {
+            main {
+              padding: 32px 24px !important;
+            }
+          }
+        </style>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 24px">
+          <style>
+            @media (min-width: 768px) {
+              main > div {
+                grid-template-columns: 300px 1fr !important;
+              }
+            }</style
+          ><!-- Left Sidebar -->
+          <aside>
+            <!-- Profile Card -->
+            <div style="position: relative; top: 0">
+              <style>
+                @media (min-width: 768px) {
+                  aside > div {
+                    position: sticky !important;
+                    top: 24px !important;
+                  }
+                }
+              </style>
+              <div
+                class="profile-avatar glitter"
+                style="margin: 0 auto 16px; overflow: hidden"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/patsy.png"
+                  alt="Patsy"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  onerror="this.style.display='none'; this.parentElement.innerHTML='🐶';"
+                />
+              </div>
+              <div style="text-align: center; margin-bottom: 16px">
+                <h2
+                  id="username"
+                  style="
+                    font-size: 26px;
+                    font-weight: 700;
+                    color: #c9d1d9;
+                    margin-bottom: 4px;
+                  "
+                >
+                  PatsyThePug
+                </h2>
+                <p
+                  id="pronouns"
+                  class="code-font"
+                  style="color: #8b949e; font-size: 14px"
+                >
+                  she/her
+                </p>
+              </div>
+              <!-- Bio -->
+              <div
+                style="
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 6px;
+                  padding: 16px;
+                  margin-bottom: 16px;
+                "
+              >
+                <p
+                  id="bio-line1"
+                  style="
+                    color: #c9d1d9;
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                  "
+                >
+                  ✨ Patsy Pugneranian, literal edición limitada con glitter. 💎
+                </p>
+                <p
+                  id="bio-line2"
+                  style="
+                    color: #c9d1d9;
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                  "
+                >
+                  💕 Debuggeo feelings, rompo código, duermo en el deploy. 😴
+                </p>
+                <p
+                  id="bio-line3"
+                  style="color: #c9d1d9; font-size: 14px; line-height: 1.5"
+                >
+                  🐾 Mini dev con patitas, slay caótico 24/7. 💻✨
+                </p>
+              </div>
+              <!-- Location -->
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  margin-bottom: 16px;
+                  padding: 0 8px;
+                "
+              >
+                <span style="font-size: 16px">📍</span>
+                <span id="location" style="color: #8b949e; font-size: 14px"
+                  >CIUDAD DE MEXICO</span
+                >
+              </div>
+              <!-- Website Link -->
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  margin-bottom: 16px;
+                  padding: 0 8px;
+                "
+              >
+                <span style="font-size: 16px">🔗</span>
+                <a
+                  href="https://patsythepugdev.life"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="website-link"
+                  style="
+                    color: #3b57fd;
+                    font-size: 14px;
+                    text-decoration: none;
+                    transition: color 0.2s;
+                  "
+                  onmouseover="this.style.color='#EC15DB'"
+                  onmouseout="this.style.color='#3B57FD'"
+                  >patsythepugdev.life</a
+                >
+              </div>
+              <!-- Social Links -->
+              <div
+                style="
+                  display: flex;
+                  gap: 12px;
+                  margin-bottom: 16px;
+                  padding: 0 8px;
+                  flex-wrap: wrap;
+                "
+              >
+                <a
+                  href="https://github.com/patsythepug"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #161b22;
+                    border: 1px solid #30363d;
+                    border-radius: 8px;
+                    transition: all 0.2s;
+                    text-decoration: none;
+                  "
+                  onmouseover="this.style.borderColor='#FE1254'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.borderColor='#30363d'; this.style.transform='translateY(0)'"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="#c9d1d9"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    /></svg
+                ></a>
+                <a
+                  href="https://linkedin.com/in/patsythepug"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #161b22;
+                    border: 1px solid #30363d;
+                    border-radius: 8px;
+                    transition: all 0.2s;
+                    text-decoration: none;
+                  "
+                  onmouseover="this.style.borderColor='#00B3FE'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.borderColor='#30363d'; this.style.transform='translateY(0)'"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="#c9d1d9"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    /></svg
+                ></a>
+                <a
+                  href="https://pinterest.com/patsythepug"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #161b22;
+                    border: 1px solid #30363d;
+                    border-radius: 8px;
+                    transition: all 0.2s;
+                    text-decoration: none;
+                  "
+                  onmouseover="this.style.borderColor='#EC15DB'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.borderColor='#30363d'; this.style.transform='translateY(0)'"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="#c9d1d9"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                    /></svg
+                ></a>
+                <a
+                  href="https://tiktok.com/@patsythepug"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #161b22;
+                    border: 1px solid #30363d;
+                    border-radius: 8px;
+                    transition: all 0.2s;
+                    text-decoration: none;
+                  "
+                  onmouseover="this.style.borderColor='#A3FC06'; this.style.transform='translateY(-2px)'"
+                  onmouseout="this.style.borderColor='#30363d'; this.style.transform='translateY(0)'"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="#c9d1d9"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                    /></svg
+                ></a>
+              </div>
+              <!-- Badges -->
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  margin-bottom: 16px;
+                "
+              >
+                <span class="badge" style="color: #fe1254">🐍 Python Dev</span>
+                <span class="badge" style="color: #00d064">☕ Java Lover</span>
+                <span class="badge" style="color: #3b57fd"
+                  >🗄️ Database Queen</span
+                >
+                <span class="badge" style="color: #ec15db">🚀 API Master</span>
+              </div>
+              <!-- Friends Section -->
+              <div
+                style="
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 6px;
+                  padding: 16px;
+                  margin-bottom: 16px;
+                "
+              >
+                <h4
+                  style="
+                    color: #c9d1d9;
+                    font-size: 13px;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                  "
+                >
+                  💚 Squad Goals
+                </h4>
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="font-size: 28px">🦉</span>
+                    <div>
+                      <p
+                        style="
+                          color: #a3fc06;
+                          font-size: 13px;
+                          font-weight: 600;
+                          margin-bottom: 2px;
+                        "
+                      >
+                        Duolingo
+                      </p>
+                      <p style="color: #8b949e; font-size: 11px">
+                        Language sensei 💚
+                      </p>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="font-size: 28px">🤖</span>
+                    <div>
+                      <p
+                        style="
+                          color: #00b3fe;
+                          font-size: 13px;
+                          font-weight: 600;
+                          margin-bottom: 2px;
+                        "
+                      >
+                        Rigoberto Bot
+                      </p>
+                      <p style="color: #8b949e; font-size: 11px">
+                        AI bestie ��
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <!-- Main Content Area -->
+          <div>
+            <!-- Stats Grid -->
+            <section id="overview" style="margin-bottom: 24px">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #febd00">⚡</span> Dev Stats
+              </h3>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                  gap: 12px;
+                "
+              >
+                <style>
+                  @media (min-width: 768px) {
+                    .stat-card:first-child {
+                      gap: 16px !important;
+                    }
+                  }
+                </style>
+                <div class="stat-card">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span style="color: #fe1254; font-size: 24px">🐍</span>
+                    <span
+                      class="code-font"
+                      style="font-size: 24px; font-weight: 700; color: #fe1254"
+                      >5+</span
+                    >
+                  </div>
+                  <p style="color: #8b949e; font-size: 13px">Python APIs</p>
+                </div>
+                <div class="stat-card">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span style="color: #a3fc06; font-size: 24px">☕</span>
+                    <span
+                      class="code-font"
+                      style="font-size: 24px; font-weight: 700; color: #a3fc06"
+                      >3+</span
+                    >
+                  </div>
+                  <p style="color: #8b949e; font-size: 13px">Java Projects</p>
+                </div>
+                <div class="stat-card">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span style="color: #3b57fd; font-size: 24px">🗄️</span>
+                    <span
+                      class="code-font"
+                      style="font-size: 24px; font-weight: 700; color: #3b57fd"
+                      >∞</span
+                    >
+                  </div>
+                  <p style="color: #8b949e; font-size: 13px">
+                    Databases Managed
+                  </p>
+                </div>
+                <div class="stat-card">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span style="color: #ec15db; font-size: 24px">🚀</span>
+                    <span
+                      class="code-font"
+                      style="font-size: 24px; font-weight: 700; color: #ec15db"
+                      >24/7</span
+                    >
+                  </div>
+                  <p style="color: #8b949e; font-size: 13px">APIs Running</p>
+                </div>
+              </div>
+            </section>
+            <!-- TikTok Feed -->
+            <section id="tiktok" style="margin-bottom: 32px">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #00f2ea">🎵</span> TikTok Feed
+              </h3>
+              <div
+                style="
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 6px;
+                  padding: 16px;
+                "
+              >
+                <style>
+                  @media (min-width: 768px) {
+                    #tiktok > div {
+                      padding: 24px !important;
+                    }
+                  }
+                </style>
+                <div
+                  class="tiktok-grid"
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(
+                      auto-fill,
+                      minmax(200px, 1fr)
+                    );
+                    gap: 16px;
+                  "
+                >
+                  <style>
+                    @media (max-width: 767px) {
+                      .tiktok-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                      }
+                    }</style
+                  ><!-- TikTok 1 - Lucky Charms -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/despues%20de%20un%20%20dia%20intenso%20programando%2C%20meriendo%20%20luckycharms%20co%20duolingop.png"
+                        alt="Lucky Charms con Duo"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          🥣 Self-care después del deploy
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #DevLife #LuckyCharms
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 2 - Eat Sleep Code -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/eatm%2C%20sleep%2C%20code%20..reapet.png"
+                        alt="Eat Sleep Code"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          💻 El ciclo nunca para
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #CodeRepeat #DevMode
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 3 - Modo Stitch -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/haciendo%20travesuras%20%20modo%20stitch.png"
+                        alt="Modo Stitch"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          ��� Chaos mode activated
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #StitchMode #Travesuras
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 4 - Octocat -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/jugando%20%20con%20%20%20%20ococat%20%20mascota%20github.png"
+                        alt="Con Octocat"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          🐙 Playtime con Octocat
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #GitHub #Octocat
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 5 - Todo bien meme -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/meme%20todo%20esta%20bien.png"
+                        alt="Todo bien"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          🔥 "Todo está bien" 🔥
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #Meme #ThisIsFine
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 6 - Policía meme -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/nooo..la%20politzia..meme%20travesuras.png"
+                        alt="La policía"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          🚨 Nooo la policía 🚨
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #Meme #CaughtInAct
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 7 - Squad nerd -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/rigoberto%2C%20duolingo%20%20nerd%20badass.png"
+                        alt="Squad nerd"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          🤓 Nerd badass squad
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #SquadGoals #NerdLife
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TikTok 8 - Más travesuras -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 12px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='#00F2EA';"
+                    onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 9/16;
+                        overflow: hidden;
+                        background: #000;
+                        position: relative;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/travesuras%20modo%20stitch.png"
+                        alt="Travesuras"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                      <div
+                        style="
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          right: 0;
+                          background: linear-gradient(
+                            transparent,
+                            rgba(0, 0, 0, 0.8)
+                          );
+                          padding: 12px;
+                        "
+                      >
+                        <p
+                          style="
+                            color: #fff;
+                            font-size: 11px;
+                            font-weight: 600;
+                            margin-bottom: 4px;
+                          "
+                        >
+                          😈 Stitch energy forever
+                        </p>
+                        <p style="color: #00f2ea; font-size: 9px">
+                          #ChaoticGood #Stitch
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Instagram Grid -->
+            <section id="instagram" style="margin-bottom: 32px">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #ec15db">📸</span> Instagram Feed
+              </h3>
+              <div
+                style="
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 6px;
+                  padding: 16px;
+                "
+              >
+                <style>
+                  @media (min-width: 768px) {
+                    #instagram > div {
+                      padding: 24px !important;
+                    }
+                  }
+                </style>
+                <div
+                  class="instagram-grid"
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(
+                      auto-fill,
+                      minmax(280px, 1fr)
+                    );
+                    gap: 16px;
+                  "
+                >
+                  <style>
+                    @media (max-width: 767px) {
+                      .instagram-grid {
+                        grid-template-columns: 1fr !important;
+                      }
+                    }</style
+                  ><!-- Post 1 - Café con amigos -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#EC15DB';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 1;
+                        overflow: hidden;
+                        background: #000;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/patsy%20pug%20(6).png"
+                        alt="Café con amigos"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                    </div>
+                    <div style="padding: 12px">
+                      <p
+                        style="
+                          color: #c9d1d9;
+                          font-size: 13px;
+                          line-height: 1.5;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        ☕🤍
+                        <strong
+                          >"Los mejores momentos son re simples, no
+                          fake."</strong
+                        >
+                      </p>
+                      <p
+                        style="
+                          color: #8b949e;
+                          font-size: 12px;
+                          line-height: 1.4;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        Una mesa, algo warm, y tu crew que nunca te deja en
+                        visto 🐾🤖🦉
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 8px;
+                          flex-wrap: wrap;
+                          margin-top: 8px;
+                        "
+                      >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#Patsy 💖</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#RealOnes 🤍</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#ChillVibes ☕</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Post 3 - París -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#EC15DB';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 1;
+                        overflow: hidden;
+                        background: #000;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/ChatGPT%20Image%203%20jul%202025%2C%2021_16_51.png"
+                        alt="Café en París"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                    </div>
+                    <div style="padding: 12px">
+                      <p
+                        style="
+                          color: #c9d1d9;
+                          font-size: 13px;
+                          line-height: 1.5;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        🥐🗼
+                        <strong
+                          >— Comment t'appelles-tu ? — Je m'appelle
+                          Patsy.</strong
+                        >
+                      </p>
+                      <p
+                        style="
+                          color: #8b949e;
+                          font-size: 12px;
+                          line-height: 1.4;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        Y así, con toda la elegancia, se presentó al mundo 🐶💫
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 8px;
+                          flex-wrap: wrap;
+                          margin-top: 8px;
+                        "
+                      >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#PatsyInParis 🗼</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#MainCharacterEnergy 🏠</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#Iconic ��</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Post 4 - Parque y columpio -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#EC15DB';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 1;
+                        overflow: hidden;
+                        background: #000;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/patsy%2C%20duo%20y%20rigo.png"
+                        alt="Parque y arcoíris"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                    </div>
+                    <div style="padding: 12px">
+                      <p
+                        style="
+                          color: #c9d1d9;
+                          font-size: 13px;
+                          line-height: 1.5;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        🌈💫
+                        <strong
+                          >La infancia no es una edad, es literalmente un
+                          mood.</strong
+                        >
+                      </p>
+                      <p
+                        style="
+                          color: #8b949e;
+                          font-size: 12px;
+                          line-height: 1.4;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        Es ese lugar al que vuelves cuando todo fluye 🐾✨
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 8px;
+                          flex-wrap: wrap;
+                          margin-top: 8px;
+                        "
+                      >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#NoCapJoy 🌟</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#RainbowVibes 🌈</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#ForeverYoung 💖</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Post 5 - Amistad diversa -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#EC15DB';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 1;
+                        overflow: hidden;
+                        background: #000;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/2.png"
+                        alt="Amistad sin límites"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                    </div>
+                    <div style="padding: 12px">
+                      <p
+                        style="
+                          color: #c9d1d9;
+                          font-size: 13px;
+                          line-height: 1.5;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        🤖🦉🐶
+                        <strong
+                          >Diferentes formas, distintas voces, pero el vibe es
+                          el mismo, period.</strong
+                        >
+                      </p>
+                      <p
+                        style="
+                          color: #8b949e;
+                          font-size: 12px;
+                          line-height: 1.4;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        La real amistad no tiene límites ni fronteras 💫🤍
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 8px;
+                          flex-wrap: wrap;
+                          margin-top: 8px;
+                        "
+                      >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#RealOnes 💖</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#DiversityWins 🌈</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#NoFakeVibes 🤍</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Post 6 - Cierre -->
+                  <div
+                    style="
+                      background: #0d1117;
+                      border: 1px solid #30363d;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    "
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='#EC15DB';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#30363d';"
+                  >
+                    <div
+                      style="
+                        aspect-ratio: 1;
+                        overflow: hidden;
+                        background: #000;
+                      "
+                    >
+                      <img
+                        src="https://raw.githubusercontent.com/frontenddeveloper2025dev/patsythepugdev/refs/heads/main/3.png"
+                        alt="Para siempre en el corazón"
+                        style="width: 100%; height: 100%; object-fit: cover"
+                        onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';"
+                      />
+                    </div>
+                    <div style="padding: 12px">
+                      <p
+                        style="
+                          color: #c9d1d9;
+                          font-size: 13px;
+                          line-height: 1.5;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        🧡🌿 <strong>Patsy nos enseñó que:</strong>
+                      </p>
+                      <p
+                        style="
+                          color: #8b949e;
+                          font-size: 12px;
+                          line-height: 1.4;
+                          margin-bottom: 8px;
+                        "
+                      >
+                        Vivir bonito también es resistir. Y amar, siempre amar.
+                        No cap. 💫🤍
+                      </p>
+                      <div
+                        style="
+                          display: flex;
+                          gap: 8px;
+                          flex-wrap: wrap;
+                          margin-top: 8px;
+                        "
+                      >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#LegendNeverDies 🌟</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#ForeverInOurHearts 💖</span
+                        >
+                        <span style="color: #ec15db; font-size: 11px"
+                          >#Icon 🤍</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Projects Section -->
+            <section id="projects" style="margin-bottom: 32px">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #febd00">🚀</span> Featured Projects
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr; gap: 16px">
+                <style>
+                  @media (min-width: 768px) {
+                    #projects > div {
+                      grid-template-columns: repeat(
+                        auto-fit,
+                        minmax(280px, 1fr)
+                      ) !important;
+                    }
+                  }
+                </style>
+                <div class="stat-card" style="border-left: 3px solid #fe1254">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #fe1254;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🍕 PizzaTracker Pro
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Real-time pizza delivery tracking system. Microservices +
+                    GraphQL.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #fe1254; font-size: 10px"
+                      >Python</span
+                    >
+                    <span class="badge" style="color: #a3fc06; font-size: 10px"
+                      >FastAPI</span
+                    >
+                    <span class="badge" style="color: #3b57fd; font-size: 10px"
+                      >PostgreSQL</span
+                    >
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #a3fc06">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #a3fc06;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🎵 BeatSync API
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Music playlist sync service. Spotify + Apple Music
+                    integration.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #a3fc06; font-size: 10px"
+                      >Node.js</span
+                    >
+                    <span class="badge" style="color: #ec15db; font-size: 10px"
+                      >Express</span
+                    >
+                    <span class="badge" style="color: #febd00; font-size: 10px"
+                      >Redis</span
+                    >
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #3b57fd">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #3b57fd;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🏋️ FitMetrics Hub
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Fitness analytics platform. Wearables data aggregation &amp;
+                    ML insights.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #3b57fd; font-size: 10px"
+                      >Python</span
+                    >
+                    <span class="badge" style="color: #fe1254; font-size: 10px"
+                      >Django</span
+                    >
+                    <span class="badge" style="color: #00b3fe; font-size: 10px"
+                      >TensorFlow</span
+                    >
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #ec15db">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #ec15db;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🌿 PlantCare AI
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Smart plant monitoring system. IoT sensors + computer
+                    vision.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #ec15db; font-size: 10px"
+                      >Python</span
+                    >
+                    <span class="badge" style="color: #a3fc06; font-size: 10px"
+                      >Flask</span
+                    >
+                    <span class="badge" style="color: #febd00; font-size: 10px"
+                      >MongoDB</span
+                    >
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #febd00">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #febd00;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    📚 BookSwap Network
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Book exchange marketplace. Social features + recommendation
+                    engine.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #febd00; font-size: 10px"
+                      >Java</span
+                    >
+                    <span class="badge" style="color: #3b57fd; font-size: 10px"
+                      >Spring Boot</span
+                    >
+                    <span class="badge" style="color: #ec15db; font-size: 10px"
+                      >MySQL</span
+                    >
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #00b3fe">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #00b3fe;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    ☕ CoffeeQueue
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Coffee shop ordering system. Mobile pre-order + loyalty
+                    rewards.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span class="badge" style="color: #00b3fe; font-size: 10px"
+                      >Python</span
+                    >
+                    <span class="badge" style="color: #fe1254; font-size: 10px"
+                      >FastAPI</span
+                    >
+                    <span class="badge" style="color: #a3fc06; font-size: 10px"
+                      >Stripe API</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Packages Section -->
+            <section id="packages" style="margin-bottom: 32px">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #3b57fd">📦</span> Backend Packages
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr; gap: 16px">
+                <style>
+                  @media (min-width: 768px) {
+                    #packages > div {
+                      grid-template-columns: repeat(
+                        auto-fit,
+                        minmax(280px, 1fr)
+                      ) !important;
+                    }
+                  }
+                </style>
+                <div class="stat-card" style="border-left: 3px solid #fe1254">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #fe1254; font-size: 16px; font-weight: 600"
+                    >
+                      🔐 patsy-auth-jwt
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #fe1254; font-size: 10px; padding: 2px 8px"
+                      >v2.4.1</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    JWT authentication middleware con refresh tokens y rate
+                    limiting. Zero drama.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 125K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 2.3K</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #a3fc06">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #a3fc06; font-size: 16px; font-weight: 600"
+                    >
+                      🗄️ patsy-query-optimizer
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #a3fc06; font-size: 10px; padding: 2px 8px"
+                      >v1.8.0</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Query optimizer automático. Tus N+1 problems? Handled,
+                    bestie.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 89K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 1.8K</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #3b57fd">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #3b57fd; font-size: 16px; font-weight: 600"
+                    >
+                      ⚡ patsy-cache-redis
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #3b57fd; font-size: 10px; padding: 2px 8px"
+                      >v3.1.2</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Redis caching wrapper con decorators. Performance goes brrr
+                    🚀
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 156K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 3.1K</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #ec15db">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #ec15db; font-size: 16px; font-weight: 600"
+                    >
+                      🔄 patsy-api-validator
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #ec15db; font-size: 10px; padding: 2px 8px"
+                      >v2.0.5</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Schema validation con error messages que no hacen llorar. No
+                    cap.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 201K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 4.2K</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #febd00">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #febd00; font-size: 16px; font-weight: 600"
+                    >
+                      📊 patsy-logger-pro
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #febd00; font-size: 10px; padding: 2px 8px"
+                      >v1.5.3</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Structured logging con context. Debug like a queen 👑
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 178K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 2.9K</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #00b3fe">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: flex-start;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <h4
+                      class="code-font"
+                      style="color: #00b3fe; font-size: 16px; font-weight: 600"
+                    >
+                      🌐 patsy-cors-shield
+                    </h4>
+                    <span
+                      class="badge"
+                      style="color: #00b3fe; font-size: 10px; padding: 2px 8px"
+                      >v1.2.8</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    CORS middleware inteligente. Security pero sin el drama.
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                    <span style="font-size: 11px; color: #8b949e"
+                      >📥 143K/month</span
+                    >
+                    <span style="font-size: 11px; color: #8b949e">⭐ 2.1K</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Pinned Repositories -->
+            <section id="repos">
+              <h3
+                style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  margin-bottom: 16px;
+                  color: #c9d1d9;
+                "
+              >
+                <span style="color: #00b3fe">📌</span> Pinned Repositories
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr; gap: 16px">
+                <style>
+                  @media (min-width: 768px) {
+                    section:last-of-type > div {
+                      grid-template-columns: repeat(
+                        auto-fit,
+                        minmax(300px, 1fr)
+                      ) !important;
+                    }
+                  }
+                </style>
+                <div class="stat-card" style="border-left: 3px solid #fe1254">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #fe1254;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🌦️ clima-api-fastapi
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Weather API REST service with FastAPI. Real-time data from
+                    OpenWeather.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #fe1254;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Python
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 234</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #a3fc06">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #a3fc06;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    📝 django-blog-cms
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Full-featured blog system with Django. Auth, comments &amp;
+                    markdown support.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #a3fc06;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Python
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 567</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #3b57fd">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #3b57fd;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    📚 biblioteca-management-java
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Library management system with Spring Boot. RESTful API
+                    &amp; PostgreSQL.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #3b57fd;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Java
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 892</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #ec15db">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #ec15db;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    ⛓️ mini-blockchain-python
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Educational blockchain implementation. Proof of work &amp;
+                    transaction validation.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #ec15db;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Python
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 1.2k</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #febd00">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #febd00;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    💬 social-network-flask
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    Simple social network with Flask. Posts, follows, likes
+                    &amp; real-time chat.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #febd00;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Python
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 445</span>
+                  </div>
+                </div>
+                <div class="stat-card" style="border-left: 3px solid #00b3fe">
+                  <h4
+                    class="code-font"
+                    style="
+                      color: #00b3fe;
+                      font-size: 16px;
+                      font-weight: 600;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    🛒 ecommerce-api-springboot
+                  </h4>
+                  <p
+                    style="
+                      color: #8b949e;
+                      font-size: 13px;
+                      margin-bottom: 12px;
+                      line-height: 1.5;
+                    "
+                  >
+                    E-commerce REST API with Spring Boot. JWT auth, payments
+                    &amp; inventory.
+                  </p>
+                  <div style="display: flex; gap: 12px; align-items: center">
+                    <span
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 12px;
+                        color: #8b949e;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 12px;
+                          height: 12px;
+                          background: #00b3fe;
+                          border-radius: 50%;
+                        "
+                      ></span>
+                      Java
+                    </span>
+                    <span style="font-size: 12px; color: #8b949e">⭐ 678</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+      <!-- Footer -->
+      <footer
+        style="
+          background: #161b22;
+          border-top: 1px solid #30363d;
+          padding: 24px 16px;
+          margin-top: 32px;
+        "
+      >
+        <style>
+          @media (min-width: 768px) {
+            footer {
+              padding: 32px 24px !important;
+              margin-top: 48px !important;
+            }
+          }
+        </style>
+        <div style="max-width: 1280px; margin: 0 auto; text-align: center">
+          <p
+            class="code-font neon-shadow"
+            style="color: #a3fc06; font-size: 13px; margin-bottom: 8px"
+          >
+            🐾✨ Made with chaos, love &amp; glitter by Patsy 💖🌈✨
+          </p>
+          <style>
+            @media (min-width: 768px) {
+              footer .code-font {
+                font-size: 14px !important;
+              }
+              footer p:last-child {
+                font-size: 13px !important;
+              }
+            }
+          </style>
+          <p style="color: #8b949e; font-size: 11px; margin-bottom: 12px">
+            © 2024 Patsy The Pug.dev �� All bugs reserved 🐞💻
+          </p>
+          <style>
+            @media (min-width: 768px) {
+              footer p:nth-child(2) {
+                font-size: 12px !important;
+              }
+            }
+          </style>
+          <p
+            style="
+              color: #fe1254;
+              font-size: 12px;
+              font-weight: 600;
+              line-height: 1.6;
+              max-width: 600px;
+              margin: 16px auto 0;
+            "
+          >
+            💕 Las almas pequeñas dejan huellas gigantes, no cap 🐾<br />
+            Patsy, tu energía sigue brillando en cada línea de código 🌟<br />
+            Siempre iconic en nuestros corazones 🤍✨
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const defaultConfig = {
+        site_title: "Patsy The Pug.dev",
+        username: "PatsyThePug",
+        pronouns: "she/her",
+        bio_line1:
+          "✨ Patsy Pugneranian, literal edición limitada con glitter. 💎",
+        bio_line2:
+          "💕 Debuggeo feelings, rompo código, duermo en el deploy. 😴",
+        bio_line3: "🐾 Mini dev con patitas, slay caótico 24/7. 💻✨",
+        location: "CIUDAD DE MEXICO",
+        website_link: "patsythepugdev.life",
+        background_color: "#0d1117",
+        card_color: "#161b22",
+        text_color: "#c9d1d9",
+        accent_primary: "#FE1254",
+        accent_secondary: "#A3FC06",
+        font_family: "Inter",
+        font_size: 14,
+      };
+
+      let config = { ...defaultConfig };
+
+      // Smooth scroll navigation
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            } else if (targetId === "#overview") {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+
+      async function onConfigChange(newConfig) {
+        config = { ...config, ...newConfig };
+
+        const baseFont = config.font_family || defaultConfig.font_family;
+        const baseFontStack = `${baseFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
+        const baseFontSize = config.font_size || defaultConfig.font_size;
+
+        document.body.style.fontFamily = baseFontStack;
+        document.body.style.fontSize = `${baseFontSize}px`;
+
+        const siteTitle = document.getElementById("site-title");
+        if (siteTitle) {
+          siteTitle.textContent = config.site_title || defaultConfig.site_title;
+          siteTitle.style.fontSize = `${baseFontSize * 1.43}px`;
+        }
+
+        const username = document.getElementById("username");
+        if (username) {
+          username.textContent = config.username || defaultConfig.username;
+          username.style.fontSize = `${baseFontSize * 1.86}px`;
+        }
+
+        const pronouns = document.getElementById("pronouns");
+        if (pronouns) {
+          pronouns.textContent = config.pronouns || defaultConfig.pronouns;
+          pronouns.style.fontSize = `${baseFontSize}px`;
+        }
+
+        const bioLine1 = document.getElementById("bio-line1");
+        if (bioLine1) {
+          bioLine1.textContent = config.bio_line1 || defaultConfig.bio_line1;
+          bioLine1.style.fontSize = `${baseFontSize}px`;
+        }
+
+        const bioLine2 = document.getElementById("bio-line2");
+        if (bioLine2) {
+          bioLine2.textContent = config.bio_line2 || defaultConfig.bio_line2;
+          bioLine2.style.fontSize = `${baseFontSize}px`;
+        }
+
+        const bioLine3 = document.getElementById("bio-line3");
+        if (bioLine3) {
+          bioLine3.textContent = config.bio_line3 || defaultConfig.bio_line3;
+          bioLine3.style.fontSize = `${baseFontSize}px`;
+        }
+
+        const location = document.getElementById("location");
+        if (location) {
+          location.textContent = config.location || defaultConfig.location;
+          location.style.fontSize = `${baseFontSize}px`;
+        }
+
+        const websiteLink = document.getElementById("website-link");
+        if (websiteLink) {
+          websiteLink.textContent =
+            config.website_link || defaultConfig.website_link;
+          websiteLink.style.fontSize = `${baseFontSize}px`;
+        }
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [
+            {
+              get: () =>
+                config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                if (window.elementSdk) {
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              },
+            },
+            {
+              get: () => config.card_color || defaultConfig.card_color,
+              set: (value) => {
+                config.card_color = value;
+                if (window.elementSdk) {
+                  window.elementSdk.setConfig({ card_color: value });
+                }
+              },
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                if (window.elementSdk) {
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              },
+            },
+            {
+              get: () => config.accent_primary || defaultConfig.accent_primary,
+              set: (value) => {
+                config.accent_primary = value;
+                if (window.elementSdk) {
+                  window.elementSdk.setConfig({ accent_primary: value });
+                }
+              },
+            },
+            {
+              get: () =>
+                config.accent_secondary || defaultConfig.accent_secondary,
+              set: (value) => {
+                config.accent_secondary = value;
+                if (window.elementSdk) {
+                  window.elementSdk.setConfig({ accent_secondary: value });
+                }
+              },
+            },
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ font_family: value });
+              }
+            },
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ font_size: value });
+              }
+            },
+          },
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          ["site_title", config.site_title || defaultConfig.site_title],
+          ["username", config.username || defaultConfig.username],
+          ["pronouns", config.pronouns || defaultConfig.pronouns],
+          ["bio_line1", config.bio_line1 || defaultConfig.bio_line1],
+          ["bio_line2", config.bio_line2 || defaultConfig.bio_line2],
+          ["bio_line3", config.bio_line3 || defaultConfig.bio_line3],
+          ["location", config.location || defaultConfig.location],
+          ["website_link", config.website_link || defaultConfig.website_link],
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues,
+        });
+      }
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9b4481dcc1e4eef2',t:'MTc2Njc5MzMwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
